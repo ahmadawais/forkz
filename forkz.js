@@ -60,8 +60,8 @@ function output(repos) {
 		longest = 0,
 		list = repos
 			.filter(function(r) {
-				total += r.forks;
-				if (r.forks >= opts.thresh) {
+				total += r.forks_count;
+				if (r.forks_count >= opts.thresh) {
 					if (r.name.length > longest) {
 						longest = r.name.length;
 					}
@@ -69,7 +69,7 @@ function output(repos) {
 				}
 			})
 			.sort(function(a, b) {
-				return b.forks - a.forks;
+				return b.forks_count - a.forks_count;
 			});
 
 	if (list.length > opts.limit) {
@@ -80,7 +80,7 @@ function output(repos) {
 	console.log(
 		list
 			.map(function(r) {
-				return r.name + new Array(longest - r.name.length + 4).join(' ') + '🍴  '.yellow + r.forks;
+				return r.name + new Array(longest - r.name.length + 4).join(' ') + '🍴  '.yellow + r.forks_count;
 			})
 			.join('\n')
 	);
