@@ -11,14 +11,8 @@
 		"optimist": "~0.6.0"
 	},
 	"deprecated": false,
-	"description": "count a github user's stars",
-	"keywords": [
-		"github",
-		"forks",
-		"count forks",
-		"count github forks",
-		"count"
-	],
+	"description": "count a github user's forks",
+	"keywords": ["github", "forks", "count forks", "count github forks", "count"],
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/ahmadawais/forkz/issues"
