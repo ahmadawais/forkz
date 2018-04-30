@@ -24,7 +24,7 @@ $ forkz ahmadawais -l 5
 Total: 600
 
 WPGulp                    🍴  139
-forkz        🍴  66
+create-guten-block        🍴  66
 Gutenberg-Boilerplate     🍴  59
 hacktoberfest             🍴  43
 Advanced-Gulp-WordPress   🍴  40
