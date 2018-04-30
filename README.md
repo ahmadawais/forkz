@@ -18,6 +18,8 @@ npm install -g forkz
 
 ## Usage
 
+![demo](https://on.ahmda.ws/rEMu/c)
+
 ```
 $ forkz ahmadawais -l 5
 
