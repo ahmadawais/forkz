@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// Setup the CLI.
 var c = require('colors'),
 	https = require('https'),
 	opts = require('optimist')
@@ -16,6 +17,9 @@ var c = require('colors'),
 		}).argv,
 	user = opts._[0];
 
+/**
+ * Send request and compile all repos.
+ */
 request('/users/' + user, function(res) {
 	if (!res.public_repos) {
 		console.log(res.message);
@@ -34,6 +38,12 @@ request('/users/' + user, function(res) {
 	}
 });
 
+/**
+ * Custom API Request fn.
+ *
+ * @param {string} url API URL
+ * @param {fn} cb Callback
+ */
 function request(url, cb) {
 	var reqOpts = {
 		hostname: 'api.github.com',
@@ -55,6 +65,11 @@ function request(url, cb) {
 		.end();
 }
 
+/**
+ * Output of CLI.
+ *
+ * @param {array} repos Repos array
+ */
 function output(repos) {
 	var total = 0,
 		longest = 0,
