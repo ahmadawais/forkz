@@ -1,7 +1,7 @@
 {
 	"name": "forkz",
 	"main": "forkz.js",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"author": "Ahmad Awais (https://AhmadAwais.com/)",
 	"bin": {
 		"forkz": "forkz.js"
@@ -12,7 +12,13 @@
 	},
 	"deprecated": false,
 	"description": "count a github user's forks",
-	"keywords": ["github", "forks", "count forks", "count github forks", "count"],
+	"keywords": [
+		"github",
+		"forks",
+		"count forks",
+		"count github forks",
+		"count"
+	],
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/ahmadawais/forkz/issues"
