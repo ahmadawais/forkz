@@ -1,7 +1,7 @@
 {
 	"name": "forkz",
 	"main": "forkz.js",
-	"version": "0.5.0",
+	"version": "0.6.0",
 	"author": "Ahmad Awais (https://AhmadAwais.com/)",
 	"bin": {
 		"forkz": "forkz.js"
