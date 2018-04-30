@@ -21,16 +21,29 @@ var c = require('colors'),
  * Send request and compile all repos.
  */
 request('/users/' + user, function(res) {
+	// If there are no public repos or wrong username.
 	if (!res.public_repos) {
 		console.log(res.message);
 		return;
 	}
+	
+	// Total no of pages for repos, 100 per page
 	var pages = Math.ceil(res.public_repos / 100),
 		i = pages,
 		repos = [];
+	
+	// Grab all the repos.
 	while (i--) {
 		request('/users/' + user + '/repos?per_page=100&page=' + (i + 1), check);
 	}
+	
+	/**
+	 * Call back function.
+	 * 
+	 * Concatenate all repos in an array, when done, prints the result.
+	 * 
+	 * @param {object} res Response object
+	 */
 	function check(res) {
 		repos = repos.concat(res);
 		pages--;
@@ -45,12 +58,15 @@ request('/users/' + user, function(res) {
  * @param {fn} cb Callback
  */
 function request(url, cb) {
+	// Request Object.
 	var reqOpts = {
 		hostname: 'api.github.com',
 		path: url,
 		headers: { 'User-Agent': 'GitHub ForkCounter' },
 		auth: opts.auth || undefined
 	};
+	
+	// API Call.
 	https
 		.request(reqOpts, function(res) {
 			var body = '';
@@ -73,24 +89,29 @@ function request(url, cb) {
 function output(repos) {
 	var total = 0,
 		longest = 0,
-		list = repos
+		list = repos // Filter the repos matching threshold.
 			.filter(function(r) {
+				// Add to total forks count.
 				total += r.forks_count;
+				// If forks count matches threhsold critereon.
 				if (r.forks_count >= opts.thresh) {
 					if (r.name.length > longest) {
 						longest = r.name.length;
 					}
 					return true;
 				}
-			})
+			}) // Sort the repositories based on forks count.
 			.sort(function(a, b) {
 				return b.forks_count - a.forks_count;
 			});
-
+	
+	// If results are more than limit.
 	if (list.length > opts.limit) {
+		// Cut down the results to limit.
 		list = list.slice(0, opts.limit);
 	}
-
+	
+	// Print the results on console.
 	console.log('\nTotal: ' + total.toString().green + '\n');
 	console.log(
 		list
