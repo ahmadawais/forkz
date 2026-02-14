@@ -1,5 +1,4 @@
 <h1 align="center">
-  <img src="https://on.ahmda.ws/rEHb/c" />
 
   Count a GitHub user's total forks.
 
